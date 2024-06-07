@@ -1358,24 +1358,16 @@
         <div class="row border px-3 py-2">
           <div class="col-12 col-md-6 mt-3">
             <h5>Upload the zip file which includes the given points below</h5>
-            <ul>
+            <ul class="upload-list">
               <li>Upload Business License Number</li>
               <li>Upload Sales Tax Exemption Number</li>
               <li>Please Upload a Picture of your Company Credit Card</li>
               <li>Please Upload a Picture of a Voided Check</li>
             </ul>
+            <div class="dropzone-previews"></div>
           </div>
           <div class="col-12 col-md-6">
             <div class="dropzone" id="my-dropzone"></div>
-            <!-- <div class="form-group">
-              <label for="business-license-number-file">Upload Zip</label>
-              <input
-                type="file"
-                class="form-control"
-                id="business-license-number-file"
-                name="file"
-              />
-            </div> -->
           </div>
           <!-- <div
             class="col-12 col-md-6 d-flex align-items-center justify-content-center"
@@ -2044,18 +2036,40 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.3/min/dropzone.min.js"></script>
     <script>
       Dropzone.autoDiscover = false;
-      var myDropzone = new Dropzone("#my-dropzone", {
+      const dropzone = new Dropzone("#my-dropzone", {
         url: "ajax/upload.php",
-        maxFilesize: 2, // MB
         addRemoveLinks: true,
-        dictDefaultMessage: "Drag and drop files here or click to upload",
-        init: function () {
-          this.on("success", function (file, response) {
-            // Handle the response
-            console.log(response);
-          });
-        },
+        maxFilesize: 1,
+        acceptedFiles: "image/*",
+        // thumbnail(file, data) {
+        //   // console.log(file.dataURL);
+        //   $(".upload-list").after(`<img
+        //     class="showImg rounded"
+        //     src="${file.dataURL}"
+        //     alt="preview"
+        //     width="50"
+        //     height="50"
+        //   />`);
+        // },
       });
+      dropzone.on("complete", function (file) {
+        setTimeout(() => {
+          this.removeAllFiles();
+        }, 1200);
+      });
+      // var myDropzone = new Dropzone("#my-dropzone", {
+      //   url: "ajax/upload.php",
+      //   maxFilesize: 1, // MB
+      //   createImageThumbnails: true,
+      //   addRemoveLinks: true,
+      //   dictDefaultMessage: "Drag and drop files here or click to upload",
+      //   init: function () {
+      //     this.on("success", function (file, response) {
+      //       // Handle the response
+      //       console.log(response);
+      //     });
+      //   },
+      // });
     </script>
     <script>
       $(document).ready(function () {
