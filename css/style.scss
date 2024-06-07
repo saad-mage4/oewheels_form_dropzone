@@ -1,0 +1,57 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+$ff-poppins: "Poppins", sans-serif;
+html {
+  scroll-behavior: smooth;
+}
+body {
+  counter-reset: label;
+}
+.counter_ {
+  font-weight: 500;
+  &::before {
+    counter-increment: label;
+    content: "" counter(label) ". ";
+  }
+}
+.dropzone {
+  border: 2px dashed #007bff;
+  border-radius: 5px;
+  background: #f8f9fa;
+  padding: 20px;
+}
+.dropzone .dz-message {
+  color: #6c757d;
+  font-weight: bold;
+  font-size: 18px;
+}
+.dropzone .dz-preview .dz-error-message {
+  top: 144px;
+}
+#general-info-form {
+  font-family: $ff-poppins;
+  .bg {
+    background-color: #13486e;
+  }
+  .heading {
+    text-align: center;
+    font-weight: 400;
+    font-size: 24px;
+    color: #fff;
+  }
+  .sub-heading {
+    font-size: 16px;
+    background-color: #f1f1f1;
+    font-weight: 600;
+    letter-spacing: 0.8px;
+  }
+  #check_terms {
+    p {
+      color: #7a7a7a;
+    }
+  }
+  input[name="upload_company_credit_card"],
+  input[name="upload_voided_check"] {
+    max-width: 300px;
+  }
+}
