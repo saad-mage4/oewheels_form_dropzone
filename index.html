@@ -2087,12 +2087,12 @@
     <script>
       $(document).ready(function () {
         toastr.options = {
-          closeButton: false,
+          closeButton: true,
           debug: false,
           newestOnTop: false,
           progressBar: true,
           positionClass: "toast-top-right",
-          preventDuplicates: false,
+          preventDuplicates: true,
           onclick: null,
           showDuration: "300",
           hideDuration: "1000",
@@ -2227,8 +2227,10 @@
         // form submit
         $("form button[type='submit']").on("click", function (e) {
           e.preventDefault();
-          let val = $("form").find("#legal-company-name").val();
-          toastr["success"](val);
+          toastr["success"](
+            "your form has been submitted successfully!",
+            "Form Submit Message"
+          );
         });
       });
     </script>
