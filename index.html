@@ -18,6 +18,13 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.3/dropzone.min.css"
       rel="stylesheet"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"
+      integrity="sha512-vKMx8UnXk60zUwyUnUPM3HbQo8QfmNx7+ltw8Pm5zLusl1XIfwcxo8DbWCqMGKaWeNxWA8yrx5v3SaVpMvR3CA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
     <link rel="stylesheet" href="css/style.css" />
   </head>
   <body>
@@ -2034,6 +2041,12 @@
       crossorigin="anonymous"
     ></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.3/min/dropzone.min.js"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"
+      integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
     <script>
       Dropzone.autoDiscover = false;
       const dropzone = new Dropzone("#my-dropzone", {
@@ -2073,6 +2086,24 @@
     </script>
     <script>
       $(document).ready(function () {
+        toastr.options = {
+          closeButton: false,
+          debug: false,
+          newestOnTop: false,
+          progressBar: true,
+          positionClass: "toast-top-right",
+          preventDuplicates: false,
+          onclick: null,
+          showDuration: "300",
+          hideDuration: "1000",
+          timeOut: "5000",
+          extendedTimeOut: "1000",
+          showEasing: "swing",
+          hideEasing: "linear",
+          showMethod: "fadeIn",
+          hideMethod: "fadeOut",
+        };
+
         // Bootstrap Tooltip Init
         var tooltipTriggerList = [].slice.call(
           document.querySelectorAll('[data-bs-toggle="tooltip"]')
@@ -2191,6 +2222,13 @@
           } else {
             $("input[name='other_explain']").attr("readonly", true).val("");
           }
+        });
+
+        // form submit
+        $("form button[type='submit']").on("click", function (e) {
+          e.preventDefault();
+          let val = $("form").find("#legal-company-name").val();
+          toastr["success"](val);
         });
       });
     </script>
